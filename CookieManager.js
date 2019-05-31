@@ -26,12 +26,12 @@ class CookieManager {
       }
     });
   }
-  setCookie(cookieName, cookieData){
+  setCookie(cookieName, cookieData, expirationTime= (Date.now() + 1000*60*60*24*30)){
     return new Promise((resolve,reject)=>{
       if(cookieName !== null && cookieData !== null)
       {
         let cookie = {
-          expirationTime: Date.now() + 1000*60*60*24*30,
+          expirationTime,
           data: cookieData
         };
         window.localStorage.setItem(cookieName, JSON.stringify(cookieData));
